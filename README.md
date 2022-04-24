@@ -13,10 +13,10 @@ Original version of this forked extension is downloadable from Google Chrome web
 + unzip and load the folder as [unpacked extension](https://developer.chrome.com/extensions/getstarted#manifest)
 + remember to click that little refresh button on the extension page for the extension if you make code changes.
 ---
-## The problem this solves: 
+## The problem this extension solves: 
 >  You will gain control over the video/audio element that is hidden and only referenced in spotify's encapsulated code.
 
-## This solution: 
+## The solution: 
 + The code main part of the code is written in a template literal string with back quotes ---> `
 	- This allows a multilined string with double quotes and single quotes without breaking the string variable
 	
@@ -25,13 +25,3 @@ Original version of this forked extension is downloadable from Google Chrome web
 	- Whenever spotify's scripts execute `document.createElement('video')` a reference to the element created is stored in VideoElementsMade
 		- `document.createElement('video')` used to be an audio element until spotify started supporting videos  and now it's randomly either
 + The `timeout()` loop is just an added assurance that the playbackspeed input element is created and that the speed is changed to the stored speed from previous sessions
-
-## __[My previous solution(bad)](https://github.com/intOrfloat/SpotifyPlaybackRate)__ 
-+ made a full copy of spotify's code 
-     - forced having to block spotify's script with a firewall extension
-     - slow to open with editor and prone to crashing when debugging
-     - firewall made things inconsistent
-     - doesnt ever update when spotify updates :(
-+ added `window.spotifyContext = this;` when you click play
-     - this allowed `window.spotifyContext._getTrackPlayer()` from anywhere
-

@@ -39,6 +39,18 @@ var code = `
 			localStorage.setItem('speed',value);
 		}
 
+
+		/* Building our title for the playback speed input field for better visibility */
+		var speedSelectionTitle = document.createElement("h5");
+			speedSelectionTitle.innerHTML = "Playback speed:";
+			speedSelectionTitle.style.margin = "5px"; // match the margin of the input element
+
+		var container = document.createElement("div");
+			container.className = "Playbackspeed-bar";
+			container.style.display = "inherit";
+			container.style.paddingLeft = "1vw";
+			container.style.paddingRight = "1vw";
+
 		/* Building our playback speed input element */
 		var input = document.createElement('input');
 		input.type = 'number';
@@ -51,6 +63,10 @@ var code = `
 		input.oninput = function(e){ /* What happens when we change the number in our input box element */
 			validateAndChangeSpeed();  /* We call our function */
 		};
+
+		// Fitting elements into one div that we append to the controls |title input|
+		container.appendChild(speedSelectionTitle);
+		container.appendChild(input);
 		
 		function validateAndChangeSpeed(value){ 
 			var val = parseFloat( value || (input.value / 100)); /* val must be in format 0.0625 - 16.0 https://stackoverflow.com/a/32320020 */
@@ -73,7 +89,7 @@ var code = `
 			if(document.getElementById('speed-extension-input') == null) /* check if our input element doesnt exist */
 			{
 				try {
-					document.getElementsByClassName('now-playing-bar__right')[0].appendChild (input); /* make our input exist on page */
+					document.getElementsByClassName("volume-bar")[0].parentElement.appendChild(container);
 				}catch{
 					setTimeout(timeout, 100);/*now-playing-bar__right doesnt exist yet so lets try again in 100ms*/
 					return;
@@ -91,10 +107,10 @@ var code = `
 		
 		timeout(); /* starts the loop to check and create our inputbox and to set the playback speed without having to mess with input box(by refreshing and having it load from cookie) */
 		/* sometimes playbackRate is set back to 1.0 by spotify's code so timeout just ensures it goes the speed the user desires */
-	};`; 
+	};`;
 /* ======== End of code string literal ======== */
 var script = document.createElement('script'); /* Create our dummy script to be inserted with our code variable  */
 script.textContent = code; /* insert our code as the contents of the script */
 document.body.appendChild(script); /* make our script exist on the page as, hopefully, the first script to execute. */
-(document.head||document.documentElement).appendChild(script); /* appends script again(not good practice) as close to top as possible */
+(document.head || document.documentElement).appendChild(script); /* appends script again(not good practice) as close to top as possible */
 script.remove(); /* idk why i do this */

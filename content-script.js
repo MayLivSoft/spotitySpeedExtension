@@ -40,6 +40,7 @@ var code = `
 		}
 
 
+		// MayLivSoft 24/04/2022
 		/* Building our title for the playback speed input field for better visibility */
 		var speedSelectionTitle = document.createElement("h5");
 			speedSelectionTitle.innerHTML = "Playback speed:";
@@ -64,6 +65,7 @@ var code = `
 			validateAndChangeSpeed();  /* We call our function */
 		};
 
+		// MayLivSoft 24/04/2022
 		// Fitting elements into one div that we append to the controls |title input|
 		container.appendChild(speedSelectionTitle);
 		container.appendChild(input);
@@ -89,7 +91,8 @@ var code = `
 			if(document.getElementById('speed-extension-input') == null) /* check if our input element doesnt exist */
 			{
 				try {
-					document.getElementsByClassName("volume-bar")[0].parentElement.appendChild(container);
+					// MayLivSoft 24/04/2022
+					document.getElementsByClassName("volume-bar")[0].parentElement.appendChild(container); // we should be able to trust that a volume bar will always be there, so we fetch the element, and append the new container to volume-bars parent.
 				}catch{
 					setTimeout(timeout, 100);/*now-playing-bar__right doesnt exist yet so lets try again in 100ms*/
 					return;

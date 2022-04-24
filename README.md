@@ -1,17 +1,11 @@
 # Spotity Speed Chrome Extension
-Change the speed of spotify song playback rate. slow or fast.
+Change the speed of spotify song and video playback.
 ---
-![preview img](https://raw.githubusercontent.com/intOrfloat/spotitySpeedExtension/master/promo%20444%20280.png)
+Original version of this forked extension is downloadable from Google Chrome webstore. Get it here: [Chrome extension link](https://chrome.google.com/webstore/detail/spotify-playback-speed-ac/cgbihpjbhpdfbdckcabcniojdhcgblhd)
 
-Get it here: [Chrome extension link](https://chrome.google.com/webstore/detail/spotify-playback-speed-ac/cgbihpjbhpdfbdckcabcniojdhcgblhd)
-
-
-### Version 1.5:
- - Added redundancy to ensure the extension loads
-
- - Spotify started randomly using <audio> and <video> interchangeably like absolute madmen so it checks for both now 
-
- - added comments to the code 
+### Version 1.6:
+ - Added title to the speed input, for better visibility.
+ - Placed the input into the controls on the new Spotify layout.
 
 ---
 ## Install from github..
@@ -19,10 +13,9 @@ Get it here: [Chrome extension link](https://chrome.google.com/webstore/detail/s
 + unzip and load the folder as [unpacked extension](https://developer.chrome.com/extensions/getstarted#manifest)
 + remember to click that little refresh button on the extension page for the extension if you make code changes.
 ---
-#### ℹ️ The code is in `content-script.js` and is heavily commented 
----
 ## The problem this solves: 
->  The video/audio element is hidden and only referenced in spotify's encapsulated code
+>  You will gain control over the video/audio element that is hidden and only referenced in spotify's encapsulated code.
+
 ## This solution: 
 + The code main part of the code is written in a template literal string with back quotes ---> `
 	- This allows a multilined string with double quotes and single quotes without breaking the string variable
